@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toggle Done: 3</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 2. user interface -->
+      <input type="checkbox" id="toggler" />
+    </div>
+
+    <script type="module">
+      // 0. initialize state
+      import { initialize } from '../../../data-access/initialize.js';
+
+      const data = {
+        done: true,
+      };
+      initialize(data);
+
+      // 1. business logic
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      const getDone = () => {
+        return find('done');
+      };
+
+      // 2. initialize user interface
+      //    handler
+      const initializeUI = () => {
+        document.getElementById('toggler').checked = getDone();
+      };
+      //    listener
+      window.addEventListener('DOMContentLoaded', initializeUI);
+    </script>
+  </body>
+</html>

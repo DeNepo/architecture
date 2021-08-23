@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toggle Done: 2</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      // 0. initialize state
+      import { initialize } from '../../../data-access/initialize.js';
+
+      const data = {
+        done: true,
+      };
+      initialize(data);
+
+      // 1. business logic
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      const getDone = () => {
+        return find('done');
+      };
+      const toggleDone = () => {
+        const done = getDone();
+        const flipped = !done;
+        save('done', flipped);
+      };
+
+      // tests for business logic
+      //   these will be gone in later steps for a smaller HTML file
+
+      save('done', true);
+      toggleDone();
+      console.log('test 1:', getDone() === false ? 'PASS' : 'FAIL');
+
+      save('done', false);
+      toggleDone();
+      console.log('test 2:', getDone() === true ? 'PASS' : 'FAIL');
+    </script>
+  </body>
+</html>

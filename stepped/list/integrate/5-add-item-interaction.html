@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>list: 5</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 4. add item -->
+      <form>
+        <input name="text" />
+        <input type="button" value="add item" id="add-item-button" />
+      </form>
+      <!-- 2. display items -->
+      <div id="list-root"></div>
+    </div>
+
+    <script type="module">
+      // --- 0. initialize state ---
+
+      import { initialize } from '../../../data-access/initialize.js';
+
+      const data = {
+        nextId: 2,
+        items: [{ id: 1, text: 'hello' }],
+      };
+      initialize(data);
+
+      // --- business logic ---
+
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      // 1. display items
+      const getItems = () => {
+        return find('items');
+      };
+      // 3. add item
+      const addItem = (text = '') => {
+        const list = find('items');
+        const nextId = find('nextId');
+        list.push({ id: nextId, text });
+        save('items', list);
+        save('nextId', nextId + 1);
+        return list;
+      };
+
+      // --- components ---
+
+      // 2. display items
+      const renderList = (items = []) => {
+        const ulEl = document.createElement('ul');
+        for (const item of items) {
+          const liEl = document.createElement('li');
+          liEl.innerHTML = item.text;
+          ulEl.appendChild(liEl);
+        }
+        return ulEl;
+      };
+
+      // --- handlers ---
+
+      // 2. display items
+      const initializeUI = () => {
+        const listEl = renderList(getItems());
+        document.getElementById('list-root').appendChild(listEl);
+      };
+      // 5. add item
+      const addItemHandler = (event) => {
+        const newText = event.target.form.text.value;
+
+        const newList = addItem(newText);
+
+        const listContainer = document.getElementById('list-root');
+        listContainer.innerHTML = '';
+        const newListEl = renderList(newList);
+        listContainer.appendChild(newListEl);
+      };
+
+      // --- listeners ---
+
+      // 2. display items
+      window.addEventListener('DOMContentLoaded', initializeUI);
+      // 5. add item
+      document
+        .getElementById('add-item-button')
+        .addEventListener('click', addItemHandler);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>list: 3</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 2. display items -->
+      <div id="list-root"></div>
+    </div>
+
+    <script type="module">
+      // --- 0. initialize state ---
+
+      import { initialize } from '../../../data-access/initialize.js';
+
+      const data = {
+        nextId: 2,
+        items: [{ id: 1, text: 'hello' }],
+      };
+      initialize(data);
+
+      // --- business logic ---
+
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      // 1. display items
+      const getItems = () => {
+        return find('items');
+      };
+
+      // 3. add item
+      const addItem = (text = '') => {
+        // read state
+        const list = find('items');
+        const nextId = find('nextId');
+        // do the stuff
+        list.push({ id: nextId, text });
+        // update state
+        save('items', list);
+        save('nextId', nextId + 1);
+        // return result
+        return list;
+      };
+
+      // tests for business logic
+
+      save('items', []);
+      save('nextId', 1);
+      addItem('hello');
+      const theList = addItem('good bye');
+
+      console.log('test 1, expect ["hello", "good bye"]:', theList);
+
+      console.log('test 2, expect 3:', find('nextId'));
+
+      // --- components ---
+
+      // 2. display items
+      const renderList = (items = []) => {
+        const ulEl = document.createElement('ul');
+        for (const item of items) {
+          const liEl = document.createElement('li');
+          liEl.innerHTML = item.text;
+          ulEl.appendChild(liEl);
+        }
+        return ulEl;
+      };
+
+      // --- handlers ---
+
+      // 2. display items
+      const initializeUI = () => {
+        const listEl = renderList(getItems());
+        document.getElementById('list-root').appendChild(listEl);
+      };
+
+      // --- listeners ---
+
+      // 2. display items
+      window.addEventListener('DOMContentLoaded', initializeUI);
+    </script>
+  </body>
+</html>

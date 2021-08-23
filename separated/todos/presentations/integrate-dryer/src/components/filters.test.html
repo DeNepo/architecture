@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="../../styles/footer.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <script type="module">
+      import { showComponentTestCase } from '/lib/show-component-test-case.js';
+
+      import { filtersComponent } from './filters.js';
+
+      const test1El = showComponentTestCase(
+        'test 1',
+        filtersComponent,
+        true,
+        true,
+      );
+      test1El.addEventListener('filter', (event) => console.log(event));
+
+      const test2El = showComponentTestCase(
+        'test 2',
+        filtersComponent,
+        true,
+        false,
+      );
+      test2El.addEventListener('filter', (event) => console.log(event));
+
+      const test3El = showComponentTestCase(
+        'test 3',
+        filtersComponent,
+        false,
+        true,
+      );
+      test3El.addEventListener('filter', (event) => console.log(event));
+
+      const test4El = showComponentTestCase(
+        'test 4',
+        filtersComponent,
+        false,
+        false,
+      );
+      test4El.addEventListener('filter', (event) => console.log(event));
+    </script>
+  </body>
+</html>

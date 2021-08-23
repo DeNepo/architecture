@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>list: 1</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      // --- 0. initialize state ---
+
+      import { initialize } from '../../../data-access/initialize.js';
+
+      const data = {
+        nextId: 2,
+        items: [{ id: 1, text: 'hello' }],
+      };
+      initialize(data);
+
+      // --- business logic ---
+
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      // 1. display items
+      const getItems = () => {
+        return find('items');
+      };
+
+      // tests
+      save('items', [{ id: 2, text: 'potato' }]);
+      const list = getItems();
+      console.log('test 1, expect [{ id: 2, text: "potato" }]', list);
+    </script>
+  </body>
+</html>

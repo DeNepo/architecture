@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script type="module">
+      import { showComponentTestCase } from '/lib/show-component-test-case.js';
+
+      import { textInput } from './text-input.js';
+
+      const test1El = showComponentTestCase(
+        'the animal is a frog',
+        textInput,
+        'animal',
+        'frog',
+      );
+      test1El.addEventListener('update', (event) => console.log(event));
+
+      const test2El = showComponentTestCase(
+        'the food is air',
+        textInput,
+        'food',
+        'air',
+      );
+      test2El.addEventListener('update', (event) => console.log(event));
+
+      const test3El = showComponentTestCase(
+        'the color is purple',
+        textInput,
+        'color',
+        'purple',
+      );
+      test3El.addEventListener('update', (event) => console.log(event));
+    </script>
+  </body>
+</html>
