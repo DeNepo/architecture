@@ -1,10 +1,8 @@
 import { store } from './local-storage/store.js';
 import { setItem } from './local-storage/set-item.js';
-import { state } from './local-storage/state.js';
+import { state } from './state.js';
 
 import { isJsonData } from './utils/is-json-data.js';
-
-import { isNode } from './utils/is-node.js';
 
 export const insert = (key = '', value) => {
   if (!isJsonData(value)) {
@@ -25,11 +23,7 @@ only these types are allowed:
     setItem(key, value);
 
     console.groupCollapsed(`: insert "${key}:"`, value);
-    if (isNode) {
-      console.log('new state:', state());
-    } else {
-      console.trace('new state:', state());
-    }
+    console.trace('new state:', state());
     console.groupEnd();
 
     return value;

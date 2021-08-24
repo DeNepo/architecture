@@ -10,7 +10,7 @@ describe('findAll: returns an array with all key/value pairs in localStorage', (
     clear();
   });
 
-  it('returns an empty array if localStorage is empty', () => {
+  it('returns an empty array if the store is empty', () => {
     expect(findAll()).toEqual([]);
   });
 

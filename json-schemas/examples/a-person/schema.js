@@ -19,4 +19,5 @@ export const schema = {
     },
   },
   required: ['firstName', 'age'],
+  additionalProperties: false,
 };

@@ -8,15 +8,11 @@
     <div id="root"></div>
 
     <script type="module">
-      // --- 0. initialize state ---
+      // --- business logic ---
 
-      import { initialize } from '../../../data-access/initialize.js';
+      import { load } from '../../../data-access/load.js';
 
-      const data = {
-        nextId: 2,
-        items: [{ id: 1, text: 'hello' }],
-      };
-      initialize(data);
+      await load('./stepped/list/data/list.json');
     </script>
   </body>
 </html>

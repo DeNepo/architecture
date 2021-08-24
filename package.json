@@ -1,11 +1,11 @@
 {
-  "name": "single-page-apps",
+  "name": "architecture",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HackYourFutureBelgium/single-page-apps.git"
+    "url": "git+https://github.com/HackYourFutureBelgium/architecture.git"
   },
   "scripts": {
     "test": "node --experimental-vm-modules  node_modules/.bin/jest --silent ",
@@ -15,9 +15,9 @@
   "author": "HackYourFutureBelgium",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HackYourFutureBelgium/single-page-apps/issues"
+    "url": "https://github.com/HackYourFutureBelgium/architecture/issues"
   },
-  "homepage": "https://github.com/HackYourFutureBelgium/single-page-apps#readme",
+  "homepage": "https://github.com/HackYourFutureBelgium/architecture#readme",
   "jest": {
     "verbose": true,
     "testEnvironment": "jsdom"

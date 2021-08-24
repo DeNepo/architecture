@@ -1,0 +1,9 @@
+{
+  "nextId": 2,
+  "things": [
+    {
+      "id": 1,
+      "text": "hello"
+    }
+  ]
+}

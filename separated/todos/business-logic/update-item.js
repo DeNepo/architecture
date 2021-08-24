@@ -1,8 +1,6 @@
 import { find } from '../../../data-access/find.js';
 import { save } from '../../../data-access/save.js';
 
-import { itemSchema } from '../data/item.schema.js';
-import { validate } from '../../../lib/validate.js';
 import { getActiveItems } from './get-active-items.js';
 
 /**
@@ -11,12 +9,17 @@ import { getActiveItems } from './get-active-items.js';
  */
 export const updateItem = (newItem = {}) => {
   // validate the new item
-  const { isValid, validationErrors } = validate(itemSchema, newItem);
-
-  if (!isValid) {
-    throw new Error(
-      `new item is not valid: \n- ${validationErrors.join('\n- ')}`,
-    );
+  if (!newItem || typeof newItem !== 'object') {
+    throw new TypeError('new item must be an object');
+  }
+  if (!('id' in newItem) || typeof newItem.id !== 'number') {
+    throw new TypeError('new item must have .id with type "number"');
+  }
+  if (!('task' in newItem) || typeof newItem.task !== 'string') {
+    throw new TypeError('new item must have .task with type "string"');
+  }
+  if (!('done' in newItem) || typeof newItem.done !== 'boolean') {
+    throw new TypeError('new item must have .done with type "boolean"');
   }
 
   // read state

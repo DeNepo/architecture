@@ -3,6 +3,7 @@
 export const schema = {
   title: 'a person',
   type: 'object',
+  additionalProperties: false,
   properties: {
     firstName: {
       type: 'string',

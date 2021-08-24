@@ -1,5 +1,3 @@
-import './state.js';
-
 import { loadListener } from '../listeners/load.js';
 
 import { createItemListener } from '../listeners/create-item.js';

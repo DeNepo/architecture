@@ -4,6 +4,7 @@ export const schema = {
   title: 'fruits & veggies',
   description: 'all the fruits and veggies in my kitchen',
   type: 'object',
+  additionalProperties: false,
   properties: {
     fruits: {
       type: 'array',

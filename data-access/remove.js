@@ -1,9 +1,7 @@
 import { store } from './local-storage/store.js';
-import { state } from './local-storage/state.js';
+import { state } from './state.js';
 import { getItem } from './local-storage/get-item.js';
 import { removeItem } from './local-storage/remove-item.js';
-
-import { isNode } from './utils/is-node.js';
 
 export const remove = (key = '') => {
   if (key in store) {
@@ -11,11 +9,7 @@ export const remove = (key = '') => {
     removeItem(key);
 
     console.groupCollapsed(`: remove "${key}"`);
-    if (isNode) {
-      console.log('new state:', state());
-    } else {
-      console.trace('new state:', state());
-    }
+    console.trace('new state:', state());
     console.groupEnd();
 
     return oldValue;

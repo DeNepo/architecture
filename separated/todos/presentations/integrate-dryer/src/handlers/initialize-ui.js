@@ -1,3 +1,4 @@
+import { initializeState } from '../../../../business-logic/initialize-state.js';
 import { getTitle } from '../../../../business-logic/get-title.js';
 import { getQuery } from '../../../../business-logic/get-query.js';
 import { getFilters } from '../../../../business-logic/get-filters.js';
@@ -7,7 +8,9 @@ import { searchFieldComponent } from '../components/search-field.js';
 import { filtersComponent } from '../components/filters.js';
 import { listComponent } from '../components/list.js';
 
-export const initializeUi = () => {
+export const initializeUi = async () => {
+  await initializeState();
+
   document.getElementById('title').innerText = getTitle();
 
   const query = getQuery();

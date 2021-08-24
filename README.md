@@ -132,7 +132,7 @@ If you create a fork of this repository you can open a project board in your for
 
 What you can expect to learn in this module
 
-<details open>
+<details>
 <summary>expand/collapse</summary>
 
 - 🥚 **State**: You understand the concept of state as the data stored in your application _at each moment_. You can explain how state is _rendered_ into a user interface, and can explain how each user interaction reads/writes from state.

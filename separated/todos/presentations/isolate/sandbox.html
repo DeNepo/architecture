@@ -10,8 +10,9 @@
     <p>use the app by calling the <code>app._()</code>s in the console</p>
 
     <script type="module">
-      import { app } from './src/init.js';
-      window.app = app;
+      import { init } from './src/init.js';
+
+      window.app = await init();
     </script>
   </body>
 </html>

@@ -1,0 +1,17 @@
+{
+  "title": "friendly",
+  "description": "some friendly data",
+  "type": "object",
+  "required": ["greeting", "message"],
+  "additionalProperties": false,
+  "properties": {
+    "greeting": {
+      "type": "string",
+      "description": "a friendly greeting for the user"
+    },
+    "message": {
+      "type": "string",
+      "description": "a friendly message for after the greeting"
+    }
+  }
+}

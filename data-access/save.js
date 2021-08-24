@@ -1,10 +1,8 @@
 import { store } from './local-storage/store.js';
-import { state } from './local-storage/state.js';
+import { state } from './state.js';
 import { setItem } from './local-storage/set-item.js';
 
 import { isJsonData } from './utils/is-json-data.js';
-
-import { isNode } from './utils/is-node.js';
 
 export const save = (key = '', newValue) => {
   if (!isJsonData(newValue)) {
@@ -23,11 +21,7 @@ only these types are allowed:
     setItem(key, newValue);
 
     console.groupCollapsed(`: save "${key}":`, newValue);
-    if (isNode) {
-      console.log('new state:', state());
-    } else {
-      console.trace('new state:', state());
-    }
+    console.trace('new state:', state());
     console.groupEnd();
 
     return newValue;

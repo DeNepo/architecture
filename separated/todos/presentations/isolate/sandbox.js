@@ -1,4 +1,6 @@
-import { app } from './src/init.js';
+import { init } from './src/init.js';
+
+const app = await init();
 
 app.showList();
 
