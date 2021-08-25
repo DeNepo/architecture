@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toggle Done: 4</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 2. user interface -->
+      <input type="checkbox" id="toggler" />
+    </div>
+
+    <script type="module">
+      // --- business logic ---
+
+      import { load } from '../../../data-access/load.js';
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      // 0. initialize state
+      const initializeState = async () => {
+        await load('./stepped/toggle-done/data/done.json');
+      };
+      // 1. display done
+      const getDone = () => {
+        return find('done');
+      };
+      // 3. toggle done
+      const toggleDone = () => {
+        const done = getDone();
+        const flipped = !done;
+        save('done', flipped);
+        return flipped;
+      };
+
+      // --- handlers ---
+
+      // 0. initialize state
+      const initializeApp = async () => {
+        await initializeState();
+
+        // 2. display done
+        const isDone = getDone();
+        document.getElementById('toggler').checked = isDone;
+      };
+      // 4. toggle done
+      const toggleDoneHandler = () => {
+        const isDone = toggleDone();
+        document.getElementById('toggler').checked = isDone;
+      };
+
+      // --- listeners ---
+
+      // 0. initialize state
+      document.addEventListener('DOMContentLoaded', initializeApp);
+      // 4. toggle done
+      document
+        .getElementById('toggler')
+        .addEventListener('change', toggleDoneHandler);
+    </script>
+  </body>
+</html>

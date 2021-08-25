@@ -1,30 +1,30 @@
-// --- initialize state ---
-
-import { initialize } from '../../../data-access/initialize.js';
-import { removeAll } from '../../../data-access/remove-all.js';
-
-const data = {
-  done: true,
-};
-removeAll();
-initialize(data);
-
 // --- business logic ---
+
+import { load } from '../../../data-access/load.js';
 import { find } from '../../../data-access/find.js';
 
+// 0. initialize state
+const initializeState = async () => {
+  await load('./stepped/toggle-done/data/done.json');
+};
+// 1. display status
 const getDone = () => {
   return find('done');
 };
 
-// some tests!
-import { save } from '../../../data-access/save.js';
+// --- controllers ---
 
-console.log('testing getDone:');
+// 0. initialize state
+const init = async () => {
+  await initializeState();
+};
 
-const status1 = getDone();
-console.log('test 1:', status1 === true ? 'PASS' : 'FAIL');
+// --- build the app ---
 
-save('done', false);
+const app = {
+  init,
+};
 
-const status2 = getDone();
-console.log('test 2:', status2 === false ? 'PASS' : 'FAIL');
+// --- use the app ---
+
+await app.init();

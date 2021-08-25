@@ -1,9 +1,13 @@
 {
-  "nextId": 2,
+  "nextId": 3,
   "things": [
     {
       "id": 1,
-      "text": "hello"
+      "text": "thing 1"
+    },
+    {
+      "id": 2,
+      "text": "thing 2"
     }
   ]
 }

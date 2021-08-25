@@ -3,19 +3,18 @@ import { removeItem } from './remove-item.js';
 import { removeAll } from '../../../data-access/remove-all.js';
 import { find } from '../../../data-access/find.js';
 import { save } from '../../../data-access/save.js';
-import { initialize } from '../../../data-access/initialize.js';
+import { insert } from '../../../data-access/insert.js';
 
 describe('removeItem: removes an item from the list by ID', () => {
   beforeEach(() => {
     removeAll();
-    initialize({
-      items: [],
-      filters: {
-        done: true,
-        notDone: true,
-      },
-      query: '',
+
+    insert('query', '');
+    insert('filters', {
+      done: true,
+      notDone: true,
     });
+    insert('items', []);
   });
 
   describe('side-effect in state: "items"', () => {

@@ -1,46 +1,50 @@
-// --- initialize state ---
-
-import { initialize } from '../../../data-access/initialize.js';
-import { removeAll } from '../../../data-access/remove-all.js';
-
-const data = {
-  done: true,
-};
-removeAll();
-initialize(data);
-
 // --- business logic ---
 
+import { load } from '../../../data-access/load.js';
 import { find } from '../../../data-access/find.js';
 
+// 0. initialize state
+const initializeState = async () => {
+  await load('./stepped/toggle-done/data/done.json');
+};
+// 1. display status
 const getDone = () => {
   return find('done');
 };
 
 // --- views ---
 
+// 2. display status
 const logStatus = (status) => {
   if (status === true) {
-    console.log('all done!');
+    console.log('\nall done!\n\n');
   } else {
-    console.log('not done :(');
+    console.log('\nnot done :(\n\n');
   }
 };
 
 // --- controllers ---
 
+// 0. initialize state
+const init = async () => {
+  await initializeState();
+};
+// 2. display status
 const status = () => {
   const currentStatus = getDone();
   logStatus(currentStatus);
 };
 
-// --- create the app ---
+// --- build the app ---
 
 const app = {
+  init,
   status,
 };
 
 // --- use the app ---
+
+await app.init();
 
 app.status();
 app.status();

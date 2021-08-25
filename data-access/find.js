@@ -1,9 +1,17 @@
-import { store } from './local-storage/store.js';
-import { state } from './state.js';
+import { state } from './local-storage/state.js';
 import { getItem } from './local-storage/get-item.js';
 
+/**
+ *
+ * @param {*} key
+ * @returns
+ */
 export const find = (key = '') => {
-  if (key in store) {
+  if (typeof key !== 'string') {
+    throw new TypeError('key is not a string');
+  }
+
+  if (key in state()) {
     const value = getItem(key);
 
     console.groupCollapsed(`: find "${key}":`, value);

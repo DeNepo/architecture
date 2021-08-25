@@ -3,24 +3,23 @@ import { getActiveItems } from './get-active-items.js';
 import { removeAll } from '../../../data-access/remove-all.js';
 import { find } from '../../../data-access/find.js';
 import { save } from '../../../data-access/save.js';
-import { initialize } from '../../../data-access/initialize.js';
+import { insert } from '../../../data-access/insert.js';
 
 describe('getActiveItems: returns all items that match the filter and include the query', () => {
   beforeEach(() => {
     removeAll();
-    initialize({
-      items: [
-        { id: 1, done: true, task: 'x' },
-        { id: 2, done: true, task: 'y' },
-        { id: 3, done: false, task: 'x' },
-        { id: 4, done: false, task: 'y' },
-      ],
-      filters: {
-        done: true,
-        notDone: true,
-      },
-      query: '',
+
+    insert('items', [
+      { id: 1, done: true, task: 'x' },
+      { id: 2, done: true, task: 'y' },
+      { id: 3, done: false, task: 'x' },
+      { id: 4, done: false, task: 'y' },
+    ]);
+    insert('filters', {
+      done: true,
+      notDone: true,
     });
+    insert('query', '');
   });
 
   describe('filters correctly for not/done when there is no query', () => {

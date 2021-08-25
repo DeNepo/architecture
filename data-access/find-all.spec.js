@@ -18,7 +18,8 @@ describe('findAll: returns an array with all key/value pairs in localStorage', (
     setItem('a', 1);
     setItem('b', true);
     setItem('c', ['hello']);
-    expect(findAll()).toEqual([
+    const allEntries = findAll();
+    expect(allEntries).toEqual([
       { key: 'a', value: 1 },
       { key: 'b', value: true },
       { key: 'c', value: ['hello'] },

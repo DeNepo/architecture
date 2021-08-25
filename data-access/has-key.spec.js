@@ -18,4 +18,21 @@ describe('hasKey: checks if a key exists in localStorage', () => {
   it('returns false if the key does not exist', () => {
     expect(hasKey('b')).toEqual(false);
   });
+
+  describe('hasKey checks the types of its arguments', () => {
+    describe('if the key is not a string, a TypeError is thrown', () => {
+      it('rejects numbers', () => {
+        const checkingANumberKey = () => hasKey(1, 'one');
+        expect(checkingANumberKey).toThrow(TypeError);
+      });
+      it('rejects booleans', () => {
+        const checkingABooleanKey = () => hasKey(false, 'one');
+        expect(checkingABooleanKey).toThrow(TypeError);
+      });
+      it('rejects null', () => {
+        const checkingANullKey = () => hasKey(null, 'one');
+        expect(checkingANullKey).toThrow(TypeError);
+      });
+    });
+  });
 });

@@ -1,10 +1,12 @@
-import { store } from './local-storage/store.js';
 import { getItem } from './local-storage/get-item.js';
+import { state } from './local-storage/state.js';
 
-import { state } from './state.js';
-
+/**
+ *
+ * @returns
+ */
 export const findAll = () => {
-  const entries = Object.keys(store).map((key) => ({
+  const entries = Object.keys(state()).map((key) => ({
     key,
     value: getItem(key),
   }));

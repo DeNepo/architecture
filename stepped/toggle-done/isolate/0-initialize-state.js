@@ -1,10 +1,25 @@
-// --- initialize state ---
+// --- business logic ---
 
-import { initialize } from '../../../data-access/initialize.js';
-import { removeAll } from '../../../data-access/remove-all.js';
+import { load } from '../../../data-access/load.js';
 
-const data = {
-  done: true,
+// 0. initialize state
+const initializeState = async () => {
+  await load('./stepped/toggle-done/data/done.json');
 };
-removeAll();
-initialize(data);
+
+// --- controllers ---
+
+// 0. initialize state
+const init = async () => {
+  await initializeState();
+};
+
+// --- build the app ---
+
+const app = {
+  init,
+};
+
+// --- use the app ---
+
+await app.init();

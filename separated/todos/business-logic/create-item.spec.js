@@ -2,20 +2,19 @@ import { createItem } from './create-item.js';
 
 import { removeAll } from '../../../data-access/remove-all.js';
 import { find } from '../../../data-access/find.js';
-import { initialize } from '../../../data-access/initialize.js';
+import { insert } from '../../../data-access/insert.js';
 
 describe('createItem: adds a new todo item to the list', () => {
   beforeEach(() => {
     removeAll();
-    initialize({
-      nextId: 1,
-      items: [],
-      filters: {
-        done: true,
-        notDone: true,
-      },
-      query: '',
+
+    insert('nextId', 1);
+    insert('items', []);
+    insert('filters', {
+      done: true,
+      notDone: true,
     });
+    insert('query', '');
   });
 
   describe('createItem returns all of the current items including the new one', () => {

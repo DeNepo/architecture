@@ -7,5 +7,5 @@
     "type": "module",
     "tests": [".spec.js", ".test.js"]
   },
-  "--port": 4005
+  "--port": 4006
 }

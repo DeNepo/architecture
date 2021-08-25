@@ -38,52 +38,53 @@ describe('save: saves an entry in the data', () => {
     });
   });
 
-  describe('save returns the value you pass in', () => {
-    it('returns the same primitive value', () => {
-      setItem('favoriteColor', 'blue');
-      const newColor = save('favoriteColor', 'orange');
-      expect(newColor).toEqual('orange');
+  describe('save checks the types of its arguments', () => {
+    describe('if the key is not a string, a TypeError is thrown', () => {
+      it('rejects numbers', () => {
+        const savingANumberKey = () => save(1, 'one');
+        expect(savingANumberKey).toThrow(TypeError);
+      });
+      it('rejects booleans', () => {
+        const savingABooleanKey = () => save(false, 'one');
+        expect(savingABooleanKey).toThrow(TypeError);
+      });
+      it('rejects null', () => {
+        const savingANullKey = () => save(null, 'one');
+        expect(savingANullKey).toThrow(TypeError);
+      });
     });
-    it('returns the same reference-type value (not a clone!)', () => {
-      setItem('someNumbers', [1, 2, 3]);
-      const newNumbers = [4, 5, 6];
-      const returnedNumbers = save('someNumbers', newNumbers);
-      const areSameArray = newNumbers === returnedNumbers;
-      expect(areSameArray).toEqual(true);
-    });
-  });
-
-  describe('save throws an error if new data is not JSON-friendly', () => {
-    it('rejects functions', () => {
-      setItem('thing', '');
-      const savingAFunction = () => save('thing', () => {});
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects undefined', () => {
-      setItem('thing', '');
-      const savingAFunction = () => save('thing', undefined);
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects DOM elements', () => {
-      setItem('thing', '');
-      const savingAFunction = () =>
-        save('thing', document.createElement('div'));
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects objects containing invalid entries', () => {
-      setItem('thing', '');
-      const savingAFunction = () =>
-        save('thing', {
-          a: () => {},
-          b: document.createElement('div'),
-        });
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects arrays containing invalid entries', () => {
-      setItem('thing', '');
-      const savingAFunction = () =>
-        save('thing', [() => {}, document.createElement('div')]);
-      expect(savingAFunction).toThrow(TypeError);
+    describe('if the new data is not a JSON data type, a TypeError is thrown', () => {
+      it('rejects functions', () => {
+        setItem('thing', '');
+        const savingAFunction = () => save('thing', () => {});
+        expect(savingAFunction).toThrow(TypeError);
+      });
+      it('rejects undefined', () => {
+        setItem('thing', '');
+        const savingAFunction = () => save('thing', undefined);
+        expect(savingAFunction).toThrow(TypeError);
+      });
+      it('rejects DOM elements', () => {
+        setItem('thing', '');
+        const savingAFunction = () =>
+          save('thing', document.createElement('div'));
+        expect(savingAFunction).toThrow(TypeError);
+      });
+      it('rejects objects containing invalid entries', () => {
+        setItem('thing', '');
+        const savingAFunction = () =>
+          save('thing', {
+            a: () => {},
+            b: document.createElement('div'),
+          });
+        expect(savingAFunction).toThrow(TypeError);
+      });
+      it('rejects arrays containing invalid entries', () => {
+        setItem('thing', '');
+        const savingAFunction = () =>
+          save('thing', [() => {}, document.createElement('div')]);
+        expect(savingAFunction).toThrow(TypeError);
+      });
     });
   });
 });

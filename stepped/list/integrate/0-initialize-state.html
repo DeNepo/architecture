@@ -12,7 +12,22 @@
 
       import { load } from '../../../data-access/load.js';
 
-      await load('./stepped/list/data/list.json');
+      // 0. initialize state
+      const initializeState = async () => {
+        await load('./stepped/list/data/list.json');
+      };
+
+      // --- handlers ---
+
+      // 0. initialize state
+      const initializeApp = async () => {
+        await initializeState();
+      };
+
+      // --- listeners ---
+
+      // 0. initialize state
+      document.addEventListener('DOMContentLoaded', initializeApp);
     </script>
   </body>
 </html>

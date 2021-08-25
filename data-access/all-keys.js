@@ -1,8 +1,11 @@
-import { store } from './local-storage/store.js';
-import { state } from './state.js';
+import { state } from './local-storage/state.js';
 
+/**
+ *
+ * @returns
+ */
 export const allKeys = () => {
-  const keys = Object.keys(store);
+  const keys = Object.keys(state());
 
   console.groupCollapsed(`: keys:`, keys);
   console.trace('state:', state());

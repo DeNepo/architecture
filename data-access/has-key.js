@@ -1,8 +1,16 @@
-import { store } from './local-storage/store.js';
-import { state } from './state.js';
+import { state } from './local-storage/state.js';
 
+/**
+ *
+ * @param {*} key
+ * @returns
+ */
 export const hasKey = (key = '') => {
-  const doesIncludeKey = key in store;
+  if (typeof key !== 'string') {
+    throw new TypeError('key is not a string');
+  }
+
+  const doesIncludeKey = key in state();
 
   console.groupCollapsed(`: includes "${key}:"`, doesIncludeKey);
   console.trace('state:', state());

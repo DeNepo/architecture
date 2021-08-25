@@ -1,15 +1,24 @@
-import { store } from './local-storage/store.js';
 import { getItem } from './local-storage/get-item.js';
 import { setItem } from './local-storage/set-item.js';
 import { removeItem } from './local-storage/remove-item.js';
 
-import { state } from './state.js';
+import { state } from './local-storage/state.js';
 
 import { validate } from '../lib/validate.js';
 
+import { isPlainObject } from './utils/is-plain-object.js';
+
+/**
+ *
+ * @param {*} dataPath
+ */
 export const load = async (dataPath = '') => {
+  if (typeof dataPath !== 'string') {
+    throw new TypeError('dataPath is not a string');
+  }
+
   // read and log initial localStorage entries
-  const storeKeys = Object.keys(store);
+  const storeKeys = Object.keys(state());
   console.log(
     ': persisted state:',
     storeKeys.reduce(
@@ -41,11 +50,13 @@ export const load = async (dataPath = '') => {
       `unable to load data: ${dataRes.value.statusText}\n\n- try fixing your data path and refreshing the page\n`,
     );
   }
-  // resolve the data
   const data = await dataRes.value.json();
-  // log loaded data
   console.log(`: loaded data:`, data);
-  // resolve and assign the schema if it was ok
+  // make sure the loaded data is an object, not an array or a primitive type
+  if (!isPlainObject(data)) {
+    throw new TypeError('loaded data is not an object');
+  }
+  // resolve and assign the schema if the request was ok
   const schema = schemaRes.value.ok ? await schemaRes.value.json() : null;
 
   // --- initialize store state with new data ---

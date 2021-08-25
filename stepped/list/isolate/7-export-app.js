@@ -1,74 +1,83 @@
-// --- initialize state ---
-
-import { initialize } from '../../../data-access/initialize.js';
-import { removeAll } from '../../../data-access/remove-all.js';
-
-const data = {
-  nextId: 2,
-  items: [{ id: 1, text: 'hello' }],
-};
-removeAll();
-initialize(data);
-
-// --- --- --- ---
+// --- business logic ---
 
 import { save } from '../../../data-access/save.js';
 import { find } from '../../../data-access/find.js';
+import { load } from '../../../data-access/load.js';
 
-const getItems = () => {
-  return find('items');
+// 0. initialize state
+const initializeState = async () => {
+  await load('./stepped/list/data/list.json');
 };
-const addItem = (text = '') => {
-  const list = find('items');
+// 1. display things
+const getThings = () => {
+  return find('things');
+};
+// 3. add thing
+const addThing = (text = '') => {
+  const list = find('things');
   const nextId = find('nextId');
   list.push({ id: nextId, text });
-  save('items', list);
+  save('things', list);
   save('nextId', nextId + 1);
   return list;
 };
-const removeItem = (id = 1) => {
-  const list = find('items');
-  const newList = list.filter((item) => item.id !== id);
-  save('items', newList);
+// 5. remove thing
+const removeThing = (id = 1) => {
+  const list = find('things');
+  const newList = list.filter((thing) => thing.id !== id);
+  save('things', newList);
   return newList;
 };
 
 // --- views ---
 
+// 2. display things
 const logList = (entries) => {
   console.log('\na list of things:');
   console.log('- - - - - - - - - - - -');
   for (const entry of entries) {
     console.log(`${entry.id}. ${entry.text}`);
   }
-  console.log();
+  console.log('\n');
+};
+// 4. add thing
+const warn = (warning = '') => {
+  console.log(`%c\n${warning}\n`, 'color: grey;');
 };
 
 // --- controllers ---
 
-const displayItems = () => {
-  const items = getItems();
-  logList(items);
+// 0. initialize state
+const init = async () => {
+  await initializeState();
 };
-const newItem = (text = '') => {
+// 2. display things
+const displayThings = () => {
+  const things = getThings();
+  logList(things);
+};
+// 4. add thing
+const newThing = (text = '') => {
   if (typeof text !== 'string') {
-    console.log('new item must be a string');
+    warn('new thing must be a string');
     return;
   }
-  addItem(text);
+  addThing(text);
 };
+// 6. remove thing
 const remove = (id = 0) => {
   if (!Number.isInteger(id) || id < 1) {
-    console.log('id must be an integer greater than 0');
+    warn('id must be an integer greater than 0');
     return;
   }
-  removeItem(id);
+  removeThing(id);
 };
 
-// --- build and export the app ---
+// --- build and export ---
 
 export const app = {
-  displayItems,
-  newItem,
+  init,
+  displayThings,
+  newThing,
   remove,
 };

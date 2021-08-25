@@ -26,6 +26,8 @@ const CRUISABLE_PATH_NAMES = [
   // 'isolate',
   // 'presentation',
   'src',
+  'data-access',
+  'function-roles',
 ];
 const IGNORABLE_PATHS = ['.git', 'node_modules'];
 
@@ -38,7 +40,11 @@ const findCruisablePaths = async (dirPath) => {
     return [];
   }
 
-  if (CRUISABLE_PATH_NAMES.includes(dirPath.split(path.sep).pop())) {
+  if (
+    CRUISABLE_PATH_NAMES.some((name) =>
+      dirPath.split(path.sep).pop().includes(name),
+    )
+  ) {
     return [dirPath];
   }
 
@@ -65,21 +71,17 @@ findCruisablePaths(ROOT)
     }));
 
     for (const project of cruised) {
-      console.log(project.path);
-
       renderGraphFromSource({ input: project.graph }, { format: 'svg' })
         .then((svgGraph) => {
           const graphBasePath = path.join(
             project.path,
-            '..',
+            project.path.includes('src') ? '..' : '',
             'dependency-graph',
           );
-          fs.writeFile(
-            `${graphBasePath}.svg`,
-            svgGraph,
-            'utf-8',
-            (err) => err && console.error(err),
-          );
+          fs.writeFile(`${graphBasePath}.svg`, svgGraph, 'utf-8', (err) => {
+            console.log(project.path);
+            err && console.error(err);
+          });
         })
         .catch((err) => console.error(err));
     }
@@ -91,5 +93,25 @@ findCruisablePaths(ROOT)
     // for (const path of paths) {
     //   console.log(path);
     // }
+  })
+  .then(() => {
+    const dataAccessPath = path.join(__dirname, '..', 'data-access');
+
+    cruiserOptions.doNotFollow = { path: ['node_modules', 'lib'] };
+
+    const project = {
+      path: dataAccessPath,
+      graph: cruise([dataAccessPath], cruiserOptions).output,
+    };
+
+    renderGraphFromSource({ input: project.graph }, { format: 'svg' })
+      .then((svgGraph) => {
+        const graphBasePath = path.join(project.path, 'dependency-graph');
+        fs.writeFile(`${graphBasePath}.svg`, svgGraph, 'utf-8', (err) => {
+          console.log(project.path);
+          err && console.error(err);
+        });
+      })
+      .catch((err) => console.error(err));
   })
   .catch((err) => console.error(err));

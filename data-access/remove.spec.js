@@ -26,11 +26,18 @@ describe('remove: removes an entry from the data', () => {
     });
   });
 
-  describe('it returns the value of the deleted key', () => {
-    it('gives you back your fruit', () => {
-      setItem('fruit', ['guava', 'papaya']);
-      const yourFruit = remove('fruit');
-      expect(yourFruit).toEqual(['guava', 'papaya']);
+  describe('if the key is not a string, a TypeError is thrown', () => {
+    it('rejects numbers', () => {
+      const removingANumberKey = () => remove(1);
+      expect(removingANumberKey).toThrow(TypeError);
+    });
+    it('rejects booleans', () => {
+      const removingABooleanKey = () => remove(false);
+      expect(removingABooleanKey).toThrow(TypeError);
+    });
+    it('rejects null', () => {
+      const removingANullKey = () => remove(null);
+      expect(removingANullKey).toThrow(TypeError);
     });
   });
 });

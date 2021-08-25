@@ -1,5 +1,5 @@
-import { initializeUi } from '../handlers/initialize-ui.js';
+import { initializeApp } from '../handlers/initialize-app.js';
 
 export const loadListener = () => {
-  window.addEventListener('DOMContentLoaded', initializeUi);
+  document.addEventListener('DOMContentLoaded', initializeApp);
 };

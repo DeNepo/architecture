@@ -4,7 +4,7 @@ export const getItem = (key = '') => {
   const item = store.getItem(key);
   try {
     return JSON.parse(item);
-  } catch (_) {
+  } catch {
     // in case an item was set manually without stringifying
     return item;
   }

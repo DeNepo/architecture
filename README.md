@@ -150,6 +150,7 @@ What you can expect to learn in this module
 - 🥚 **Development Steps**:
 - 🐣 **Nested Data**: Given a nested data structure containing arrays, objects and primitive values, you can 1) access a given value 2) update a given entry 3) filter the data
 - 🐣 **Matching a JSON Schemas**: You can write an object or array that matches a JSON schema.
+- 🐣 **Using a Library**: You can select which functions from the `/data-access` library to use in your Business Logic functions. This includes reading the documentation, tests and source code to understand how the Data Access functions work.
 - 🐣 **Stateful Testing**: You can pass and write unit tests for stateful functions - using `beforeEach` to reset state before each test, and testing for the _correct_ side-effects in state.
 - 🐥 **TDD + Reverse Engineering**: Given unit tests for the _business logic_ and an obfuscated demo of the interface, you can build a working application that passes the tests and matches the demo.
 - 🐥 **Writing a JSON Schemas**: You can write a JSON schema that matches several data instances.

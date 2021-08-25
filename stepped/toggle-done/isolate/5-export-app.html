@@ -9,6 +9,9 @@
 
     <script type="module">
       import { app } from './5-export-app.js';
+
+      await app.init();
+
       window.app = app;
     </script>
   </body>

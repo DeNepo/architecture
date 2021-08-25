@@ -1,21 +1,20 @@
 import { updateItem } from './update-item.js';
 
 import { removeAll } from '../../../data-access/remove-all.js';
-import { initialize } from '../../../data-access/initialize';
+import { insert } from '../../../data-access/insert.js';
 import { save } from '../../../data-access/save.js';
 import { find } from '../../../data-access/find.js';
 
 describe('updateItem: updates an item in the list by ID', () => {
   beforeEach(() => {
     removeAll();
-    initialize({
-      items: [],
-      filters: {
-        done: true,
-        notDone: true,
-      },
-      query: '',
+
+    insert('query', '');
+    insert('filters', {
+      done: true,
+      notDone: true,
     });
+    insert('items', []);
   });
 
   describe('returns the updated list, if the item exists', () => {

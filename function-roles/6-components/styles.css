@@ -1,0 +1,9 @@
+.side-by-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.no-dots {
+  list-style-type: none;
+}

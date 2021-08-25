@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toggle Done: 1</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      // --- business logic ---
+
+      import { load } from '../../../data-access/load.js';
+      import { save } from '../../../data-access/save.js';
+      import { find } from '../../../data-access/find.js';
+
+      // 0. initialize state
+      const initializeState = async () => {
+        await load('./stepped/toggle-done/data/done.json');
+      };
+      // 1. display done
+      const getDone = () => {
+        return find('done');
+      };
+
+      // --- handlers ---
+
+      // 0. initialize state
+      const initializeApp = async () => {
+        await initializeState();
+      };
+
+      // --- listeners ---
+
+      // 0. initialize state
+      document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+  </body>
+</html>

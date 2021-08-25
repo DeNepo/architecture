@@ -35,45 +35,48 @@ describe('insert: inserts an entry in the data', () => {
     });
   });
 
-  describe('insert returns the value you pass in', () => {
-    it('returns the same primitive value', () => {
-      const newColor = insert('favoriteColor', 'orange');
-      expect(newColor).toEqual('orange');
+  describe('insert checks the types of its arguments', () => {
+    describe('if the key is not a string, a TypeError is thrown', () => {
+      it('rejects numbers', () => {
+        const insertingANumberKey = () => insert(1, 'one');
+        expect(insertingANumberKey).toThrow(TypeError);
+      });
+      it('rejects booleans', () => {
+        const insertingABooleanKey = () => insert(false, 'one');
+        expect(insertingABooleanKey).toThrow(TypeError);
+      });
+      it('rejects null', () => {
+        const insertingANullKey = () => insert(null, 'one');
+        expect(insertingANullKey).toThrow(TypeError);
+      });
     });
-    it('returns the same reference-type value (not a clone!)', () => {
-      const newNumbers = [4, 5, 6];
-      const returnedNumbers = insert('someNumbers', newNumbers);
-      const areSameArray = newNumbers === returnedNumbers;
-      expect(areSameArray).toEqual(true);
-    });
-  });
-
-  describe('insert throws an error if new data is not JSON-friendly', () => {
-    it('rejects functions', () => {
-      const savingAFunction = () => insert('thing', () => {});
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects undefined', () => {
-      const savingAFunction = () => insert('thing', undefined);
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects DOM elements', () => {
-      const savingAFunction = () =>
-        insert('thing', document.insertElement('div'));
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects objects containing invalid entries', () => {
-      const savingAFunction = () =>
-        insert('thing', {
-          a: () => {},
-          b: document.insertElement('div'),
-        });
-      expect(savingAFunction).toThrow(TypeError);
-    });
-    it('rejects arrays containing invalid entries', () => {
-      const savingAFunction = () =>
-        insert('thing', [() => {}, document.insertElement('div')]);
-      expect(savingAFunction).toThrow(TypeError);
+    describe('if the new data is not a JSON data type, a TypeError is thrown', () => {
+      it('rejects functions', () => {
+        const insertingAFunction = () => insert('thing', () => {});
+        expect(insertingAFunction).toThrow(TypeError);
+      });
+      it('rejects undefined', () => {
+        const insertingAFunction = () => insert('thing', undefined);
+        expect(insertingAFunction).toThrow(TypeError);
+      });
+      it('rejects DOM elements', () => {
+        const insertingAFunction = () =>
+          insert('thing', document.insertElement('div'));
+        expect(insertingAFunction).toThrow(TypeError);
+      });
+      it('rejects objects containing invalid entries', () => {
+        const insertingAFunction = () =>
+          insert('thing', {
+            a: () => {},
+            b: document.insertElement('div'),
+          });
+        expect(insertingAFunction).toThrow(TypeError);
+      });
+      it('rejects arrays containing invalid entries', () => {
+        const insertingAFunction = () =>
+          insert('thing', [() => {}, document.insertElement('div')]);
+        expect(insertingAFunction).toThrow(TypeError);
+      });
     });
   });
 });

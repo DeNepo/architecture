@@ -1,17 +1,16 @@
 import { setFilters } from './set-filters.js';
 
 import { removeAll } from '../../../data-access/remove-all.js';
-import { initialize } from '../../../data-access/initialize.js';
+import { insert } from '../../../data-access/insert.js';
 import { find } from '../../../data-access/find.js';
 
 describe('setFilters: updates the title in state', () => {
   beforeEach(() => {
     removeAll();
-    initialize({
-      filters: {},
-      items: [],
-      query: '',
-    });
+
+    insert('query', '');
+    insert('filters', {});
+    insert('items', []);
   });
 
   it('side-effect in state: changes "filters"', () => {
