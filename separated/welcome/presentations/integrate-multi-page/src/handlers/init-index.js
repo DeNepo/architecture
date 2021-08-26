@@ -5,7 +5,7 @@ import { navbar } from '../components/navbar.js';
 import { footer } from '../components/footer.js';
 
 export const initIndex = async () => {
-  await initializeState();
+  await initializeState('../../../../data/friendly.json', import.meta);
 
   document.getElementById('navbar-container').appendChild(navbar());
   document.getElementById('footer-container').appendChild(footer());

@@ -12,12 +12,19 @@ import { isPlainObject } from './utils/is-plain-object.js';
  *
  * @param {*} dataPath
  */
-export const load = async (dataPath = '') => {
+export const load = async (dataPath = '', meta = { url: '' }) => {
   if (typeof dataPath !== 'string') {
-    throw new TypeError('dataPath is not a string');
+    throw new TypeError('first argument is not a string');
+  }
+  if (!isPlainObject(meta)) {
+    throw new TypeError('second argument is not an object');
+  }
+  if (typeof meta.url !== 'string') {
+    throw new TypeError('second argument does not have a .url string property');
   }
 
-  // read and log initial localStorage entries
+  // --- read and log persisted state from the last site ---
+
   const storeKeys = Object.keys(state());
   console.log(
     ': persisted state:',
@@ -26,16 +33,23 @@ export const load = async (dataPath = '') => {
       {},
     ),
   );
+  [].slice;
 
   // --- fetch the data & schema, resolve them if they are ok ---
 
   // declare URLs
-  const windowOrigin =
+  const importingURL = meta.url.split('?')[0];
+  const windowURL =
     window.location.origin === 'null'
-      ? window.parent.location.origin
-      : window.location.origin;
-  const dataURL = `${windowOrigin}/${dataPath}`;
-  const schemaURL = `${windowOrigin}/${dataPath.replace(
+      ? `${window.parent.location.origin}${window.parent.location.pathname}`
+      : `${window.location.origin}${window.location.pathname}`;
+  const fetchOrigin = importingURL !== windowURL ? importingURL : windowURL;
+  const adjustedOrigin = fetchOrigin
+    .split('/')
+    .slice(0, importingURL.split('/').length - 1)
+    .join('/');
+  const dataURL = `${adjustedOrigin}/${dataPath}`;
+  const schemaURL = `${adjustedOrigin}/${dataPath.replace(
     '.json',
     '.schema.json',
   )}`;

@@ -1,5 +1,5 @@
 import { load } from '../../../data-access/load.js';
 
-export const initializeState = async () => {
-  await load('./separated/welcome/data/friendly.json');
+export const initializeState = async (pathToData = '', meta = { url: '' }) => {
+  await load(pathToData, meta);
 };

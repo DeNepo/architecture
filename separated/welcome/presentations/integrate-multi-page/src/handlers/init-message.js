@@ -7,7 +7,7 @@ import { footer } from '../components/footer.js';
 import { textInput } from '../components/text-input.js';
 
 export const initMessage = async () => {
-  await initializeState();
+  await initializeState('../../../../data/friendly.json', import.meta);
 
   document.getElementById('navbar-container').appendChild(navbar());
   document.getElementById('footer-container').appendChild(footer());

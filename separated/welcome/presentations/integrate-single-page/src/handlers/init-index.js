@@ -6,7 +6,7 @@ import { readMessage } from '../../../../business-logic/read-message.js';
 import { beWelcoming } from '../../../../business-logic/be-welcoming.js';
 
 export const initIndex = async () => {
-  await initializeState();
+  await initializeState('../../../../data/friendly.json', import.meta);
 
   document.getElementById('words').innerHTML = beWelcoming();
 

@@ -4,7 +4,7 @@ import { load } from '../../../data-access/load.js';
 
 // 0. initialize state
 const initializeState = async () => {
-  await load('./stepped/toggle-done/data/done.json');
+  await load('../data/done.json', import.meta);
 };
 
 // --- controllers ---

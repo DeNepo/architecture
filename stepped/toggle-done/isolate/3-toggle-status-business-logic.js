@@ -6,7 +6,7 @@ import { save } from '../../../data-access/save.js';
 
 // 0. initialize state
 const initializeState = async () => {
-  await load('./stepped/toggle-done/data/done.json');
+  await load('../data/done.json', import.meta);
 };
 // 1. display status
 const getDone = () => {

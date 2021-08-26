@@ -9,7 +9,7 @@ import { filtersComponent } from '../components/filters.js';
 import { listComponent } from '../components/list.js';
 
 export const initializeApp = async () => {
-  await initializeState();
+  await initializeState('../../../../data/todos.json', import.meta);
 
   document.getElementById('title').innerText = getTitle();
 

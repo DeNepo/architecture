@@ -3,6 +3,7 @@
   "description": "some test data for the 'DOMContentLoaded' tests (that don't exist yet)",
   "required": ["aNumber"],
   "additionalProperties": false,
+  "type": "object",
   "properties": {
     "aNumber": {
       "type": "string",
