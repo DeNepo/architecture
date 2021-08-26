@@ -122,6 +122,7 @@ Event handlers are the functions responsible for reading user input from events 
 - it can `import` from:
   - _utils_
   - _business-logic_
+  - _components_
 - it can `export` to:
   - _listeners_
 
