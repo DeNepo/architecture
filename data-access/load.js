@@ -33,7 +33,6 @@ export const load = async (dataPath = '', meta = { url: '' }) => {
       {},
     ),
   );
-  [].slice;
 
   // --- fetch the data & schema, resolve them if they are ok ---
 

@@ -6,8 +6,8 @@ import { deleteEvent } from '../custom-events/delete.js';
  *
  * @param {object} item - An item object from the list.
  * @returns {HTMLDivElement} The root element for this component.
- * @emits CustomEvent#update
- * @emits CustomEvent#delete
+ * @fires CustomEvent#update
+ * @fires CustomEvent#delete
  */
 export const itemComponent = (item) => {
   const itemContainer = document.createElement('div');

@@ -5,7 +5,7 @@ import { addNumberEvent } from '../custom-events/add-number.js';
  *
  * @param {number} initialValue - The initial value for this input.
  * @returns {HTMLInputElement} - The rendered input element.
- * @emits CustomEvent#addNumber
+ * @fires CustomEvent#addNumber
  */
 export const numberInputComponent = (initialValue = 0) => {
   const inputEl = document.createElement('input');

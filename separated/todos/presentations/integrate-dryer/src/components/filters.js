@@ -6,7 +6,7 @@ import { filterEvent } from '../custom-events/filter.js';
  * @param {boolean} done - Are the done items checked or not?
  * @param {boolean} notDone - Are the not done items checked or not?
  * @returns {HTMLFormElement} A form with the filtering options.
- * @emits CustomEvent#filter
+ * @fires CustomEvent#filter
  */
 export const filtersComponent = (done = true, notDone = true) => {
   const formString = `

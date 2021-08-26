@@ -177,10 +177,6 @@ What you can expect to learn in this module
 
 ### Layer 3: Presentation
 
-#### Isolate
-
-#### Integrate
-
 </details>
 <br>
 
@@ -198,7 +194,8 @@ Helpful links, examples and exercises.
 
 ### In this Repo
 
-- examples
+- ## examples
+  - 🥚 [/function-roles](./function-roles): learn about the function roles you will be using in this module
   - 🥚 [/stepped](./stepped): study HTML/CSS/JS projects built up step-by-step (only examples)
   - 🥚 [/separated](./separated): study HTML/CSS/JS projects that have been separated by concern (only examples)
 - exercises
@@ -225,6 +222,26 @@ Helpful links, examples and exercises.
 #### After Break
 
 ### After Class
+
+> one big group project for the whole module
+
+Build a JS quiz! There is some starter data for you in [./quiz-data](./quiz-data), you can copy-paste it into the [architecture starter](https://github.com/hackyourfuturebelgium/architecture-starter)'s `/data` folder to get started.
+
+There is some code already in the starter repository, it's just there so you can see how the folder structure works. Your group will want to remove the extra code before getting started (there are comments to help you find what's important to keep ).
+
+```markdown
+- [ ] [repo](https://github.com/_/_) (with a complete README)
+- [ ] [live demo](https://_.github.io/_)
+- [ ] [Docs](https://github.com/_/_/tree/_/docs/README.md)
+- [/planning](https://github.com/_/_/tree/_/planning)
+  - [ ] communication plan
+  - [ ] constraints
+  - [ ] backlog
+  - [ ] wireframe
+  - [ ] development strategy
+  - [ ] retrospective
+- [ ] [project board](https://github.com/_/_/projects/1)
+```
 
 </details>
 <br>

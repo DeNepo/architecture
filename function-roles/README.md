@@ -123,6 +123,7 @@ Event handlers are the functions responsible for reading user input from events 
   - _utils_
   - _business-logic_
   - _components_
+  - _handlers_
 - it can `export` to:
   - _listeners_
 
@@ -206,7 +207,7 @@ You need to document a custom event in two places.
     *
     * @param {string} [initialGreeting=''] - The greeting to set as initial value for the input.
     * @returns {HTMLInputElement} - The input where the user will write their greeting.
-    * @emits CustomElement#greet
+    * @fires CustomElement#greet
     */
    export const greetingInputComponent = (initialGreeting = '') => {
      const inputEl = document.createElement('input');
