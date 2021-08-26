@@ -14,13 +14,13 @@ This folder is at the root of this repo because all the examples and exercises u
 - [`removeAll()`](#removeall)
 - [`hasKey(key = '')`](#haskeykey--)
 - [`allKeys()`](#allkeys)
-- [`load(dataPath = '')`](#loaddatapath--)
+- [`load(dataPath = '', import.meta)`](#loaddatapath--)
 
 > These Data Access functions will only work in the browser, not in Node.js
 
 ---
 
-## `insert(key = '', value)`
+## [`insert(key = '', value)`](./insert.js)
 
 This function will add a new key/value pair to your program's state. It will only work if the key does not exist already, if you try inserting a key that already exists the function will throw an error
 
@@ -54,7 +54,7 @@ export const addNewUser = (userName = '', email = '') => {
 
 </details>
 
-## `find(key = '')`
+## [`find(key = '')`](./find.js)
 
 This function will return the value saved behind a specific key. It can only find keys that already exist in state!
 
@@ -86,7 +86,7 @@ export const getUser = (userName = '') => {
 
 </details>
 
-## `findAll()`
+## [`findAll()`](./find-all.js)
 
 Returns all of the key/value pairs in state as an array of objects:
 
@@ -127,7 +127,7 @@ export const listUsers = () => {
 
 </details>
 
-## `save(key ='', value)`
+## [`save(key ='', value)`](./save.js)
 
 Updates an existing entry in state with a new value. If the key does not already exist it will throw an error, you need to `insert` first before you can `save` changes later.
 
@@ -161,7 +161,7 @@ export const changeEmail = (userName = '', newEmail = '') => {
 
 </details>
 
-## `remove(key = '')`
+## [`remove(key = '')`](./remove.js)
 
 Removes a key/value pair from state.
 
@@ -193,7 +193,7 @@ export const deleteUser = (userName = '') => {
 
 </details>
 
-## `removeAll()`
+## [`removeAll()`](./remove-all.js)
 
 Removes all key/value pairs
 
@@ -219,7 +219,7 @@ export const closeWebsite = () => {
 
 ---
 
-## `hasKey(key = '')`
+## [`hasKey(key = '')`](./has-key.js)
 
 Tells you if a specific key exists in your state.
 
@@ -250,7 +250,7 @@ export const deleteUser = (userName = '') => {
 
 </details>
 
-## `allKeys()`
+## [`allKeys()`](./all-keys.js)
 
 Returns an array containing all the keys in state.
 
@@ -292,14 +292,15 @@ export const listUsers = () => {
 
 ---
 
-## `load(dataPath = '')`
+## [`load(dataPath = '', import.meta)`](./load.js)
 
 The `load` function is different from the rest of these functions. You will need to call it once when your program is initialized and never again.
 
 It also works using `async`/`await` - you don't need to be understand this! The project starter will already have this code written for you, and you will study it in the next module.
 
 - **args**
-  - _dataPath (string)_: A path from the root of this repository to your .json data file.
+  - _dataPath (string)_: A relative path from the file calling `load` to your .json data file.
+  - _meta ({ url: '' })_: the value of `import.meta` in the file initiating the `load` call
 - **returns**: `undefined`, no return value
 - **throws**:
   - _TypeError_: If the dataPath is not a string
@@ -320,7 +321,7 @@ import { load } from '... ... data-access/load.js';
 // a business logic function
 export const initializeState = async () => {
   // it will fetch this JSON data and initialize your program state
-  await load('./path/to/data-file.json');
+  await load('../ ... /path/to/data-file.json', import.meta);
 };
 ```
 

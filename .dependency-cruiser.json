@@ -1,6 +1,6 @@
 {
   "outputType": "dot",
-  "doNotFollow": { "path": ["node_modules", "lib", "^data-access$"] },
+  "doNotFollow": { "path": ["node_modules", "lib", "data-access"] },
   "reporterOptions": {
     "dot": {
       "collapsePattern": "^((node_modules|lib)/[^/]+)"
