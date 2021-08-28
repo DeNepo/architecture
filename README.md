@@ -192,6 +192,10 @@ Helpful links, examples and exercises.
 <summary>expand/collapse</summary>
 <br>
 
+### Software Architecture?
+
+- [Intro to Architecture](https://vimeo.com/593884915) - abstraction! layers!
+
 ### In this Repo
 
 - ## examples
@@ -214,6 +218,8 @@ Helpful links, examples and exercises.
 <summary>expand/collapse</summary>
 
 ### Before Class
+
+- [Intro to Architecture](https://vimeo.com/593884915) - abstraction! layers!
 
 ### During Class
 
