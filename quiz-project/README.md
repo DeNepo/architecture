@@ -1,4 +1,4 @@
-# Quiz Data
+# Quiz Project
 
 data you can copy into the [architecture starter](https://github.com/hackyourfuturebelgium/architecture-starter) for this module's project
 

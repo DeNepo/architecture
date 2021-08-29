@@ -231,7 +231,10 @@ Helpful links, examples and exercises.
 
 > one big group project for the whole module
 
-Build a JS quiz! There is some starter data for you in [./quiz-data](./quiz-data), you can copy-paste it into the [architecture starter](https://github.com/hackyourfuturebelgium/architecture-starter)'s `/data` folder to get started.
+Build a JS quiz! There is some starter materials for you in [./quiz-project](./quiz-project), you can copy-paste these materials into the [architecture starter](https://github.com/hackyourfuturebelgium/architecture-starter):
+
+- `quiz.json` and `quiz.schema.json` can go in your `/data` folder. This is an idea for your program's data, feel free to change it if something else makes more sense for your group.
+- the `backlog.md` file can og in your `/planning` folder. This is a suggestion of what a user can _do_ with your data, you can use this as a starting point for planning your group project.
 
 There is some code already in the starter repository, it's just there so you can see how the folder structure works. Your group will want to remove the extra code before getting started (there are comments to help you find what's important to keep ).
 
