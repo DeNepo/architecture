@@ -45,6 +45,8 @@ Logic functions are responsible for the many complicated things you may need to 
 
 ### 2. Data Access
 
+Data Access functions are like a librarian, they can find a book you're looking for and put it away when you're done. But they cannot study it for you or write your homework assignment for you.
+
 These _are not_ pure functions. Their role is to read and write to your program's state (data). Each time you call them, their behavior will depend on the current _state_ of your data.
 
 "Why a separate role?" you ask. "Why not just update the data in our handlers?". Because of **Abstraction** and **Layers**! A well-designed program will have several layers between the user and the program state, each layer responsible for one type of work.
@@ -68,6 +70,8 @@ You could even change how your data is stored without changing the rest of your 
 ---
 
 ### 3. Business Logic
+
+Business Logic functions are like the student at the library. they ask the librarian (Data Access) to help them find a book, they study the book and write a paper, then give the book back to the librarian who makes sure it is put away on the right shelf.
 
 These are the heart of your application. At their heart, a user story is about what a user can do with your program data. The Business Logic layer makes that magic happen. A Business Logic function will take cleaned input from the user interface, read/write program state, and return new data to be rendered into the UI.
 
