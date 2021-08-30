@@ -1,4 +1,4 @@
-import { updateIncrement } from '../../../business-logic/update-increment.js';
+import { updateIncrement } from '../../../../business-logic/update-increment.js';
 
 export const changeIncrementHandler = (event) => {
   // read user input

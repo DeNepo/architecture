@@ -1,4 +1,4 @@
-import { step } from '../../../business-logic/step.js';
+import { step } from '../../../../business-logic/step.js';
 
 export const stepHandler = (event) => {
   // read user input
