@@ -3,6 +3,8 @@ import { getNumbers } from '../../3-business-logic/get-numbers.js';
 import { getSorted } from '../../3-business-logic/get-sorted.js';
 
 export const addNumberHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input
   const newNumber = Number(event.target.value);
 

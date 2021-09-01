@@ -5,6 +5,8 @@ import { navbar } from '../components/navbar.js';
 import { footer } from '../components/footer.js';
 
 export const initIndex = async () => {
+  debugger; // index.html entry point: initialize state & UI
+
   await initializeState();
 
   document.getElementById('navbar-container').appendChild(navbar());

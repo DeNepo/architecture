@@ -81,6 +81,7 @@
 
       // 0. initialize state
       const initializeApp = async () => {
+        debugger; // entry point
         await initializeState();
 
         // 2. display initial state
@@ -90,6 +91,7 @@
       };
       // 5. add thing
       const addThingHandler = (event) => {
+        debugger; // entry point
         const newText = event.target.form.text.value;
 
         const newList = addThing(newText);
@@ -101,6 +103,7 @@
       };
       // 8. remove thing
       const removeThingHandler = (event) => {
+        debugger; // entry point
         const idToRemove = event.detail.id;
 
         const newList = removeThing(idToRemove);

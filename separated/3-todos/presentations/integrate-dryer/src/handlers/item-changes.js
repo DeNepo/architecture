@@ -4,6 +4,8 @@ import { updateItem } from '../../../../business-logic/update-item.js';
 import { listComponent } from '../components/list.js';
 
 export const itemChangesHandler = (event) => {
+  debugger; // entry point: user interaction
+
   let newList;
 
   if (event.type === 'delete') {

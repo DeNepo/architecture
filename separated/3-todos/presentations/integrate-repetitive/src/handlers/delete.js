@@ -3,6 +3,8 @@ import { removeItem } from '../../../../business-logic/remove-item.js';
 import { listComponent } from '../components/list.js';
 
 export const deleteHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input from custom event
   const id = event.detail.id;
 

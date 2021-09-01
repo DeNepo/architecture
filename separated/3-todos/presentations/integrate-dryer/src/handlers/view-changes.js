@@ -4,6 +4,8 @@ import { set } from '../../../../business-logic/set.js';
 import { listComponent } from '../components/list.js';
 
 export const viewChangesHandler = (event) => {
+  debugger; // entry point: user interaction
+
   if (event.type === 'filter') {
     // read user input from custom event
     const done = event.detail.done;

@@ -42,15 +42,18 @@ const warn = (warning = '') => {
 
 // 0. initialize state
 const init = async () => {
+  debugger; // entry point
   await initializeState();
 };
 // 2. display things
 const displayThings = () => {
+  debugger; // entry point
   const things = getThings();
   logList(things);
 };
 // 4. add thing
 const newThing = (text = '') => {
+  debugger; // entry point
   if (typeof text !== 'string') {
     warn('new thing must be a string');
     return;

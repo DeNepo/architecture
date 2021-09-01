@@ -1,5 +1,7 @@
 import { init } from './src/init.js';
 
+debugger;
+
 const app = await init();
 
 app.showList();

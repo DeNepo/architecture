@@ -3,6 +3,8 @@ import { updateMessage } from '../../../../business-logic/update-message.js';
 import { beWelcoming } from '../../../../business-logic/be-welcoming.js';
 
 export const updateState = (event) => {
+  debugger; // entry point: user interaction
+
   console.log('updating state');
 
   // read user input

@@ -35,10 +35,12 @@ const logStatus = (status) => {
 
 // 0. initialize state
 const init = async () => {
+  debugger; // entry point
   await initializeState();
 };
 // 2. display status
 const status = () => {
+  debugger; // entry point
   const currentStatus = getDone();
   logStatus(currentStatus);
 };

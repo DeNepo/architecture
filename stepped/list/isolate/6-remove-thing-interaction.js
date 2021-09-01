@@ -49,15 +49,18 @@ const warn = (warning = '') => {
 
 // 0. initialize state
 const init = async () => {
+  debugger; // entry point
   await initializeState();
 };
 // 2. display things
 const displayThings = () => {
+  debugger; // entry point
   const things = getThings();
   logList(things);
 };
 // 4. add thing
 const newThing = (text = '') => {
+  debugger; // entry point
   if (typeof text !== 'string') {
     warn('new thing must be a string');
     return;
@@ -66,6 +69,7 @@ const newThing = (text = '') => {
 };
 // 6. remove thing
 const remove = (id = 0) => {
+  debugger; // entry point
   if (!Number.isInteger(id) || id < 1) {
     warn('id must be an integer greater than 0');
     return;

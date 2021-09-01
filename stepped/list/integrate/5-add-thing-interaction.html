@@ -57,6 +57,7 @@
 
       // 0. initialize state
       const initializeApp = async () => {
+        debugger; // entry point
         await initializeState();
 
         // 2. display initial state
@@ -66,6 +67,7 @@
       };
       // 5. add item
       const addThingHandler = (event) => {
+        debugger; // entry point
         const newText = event.target.form.text.value;
 
         const newList = addThing(newText);

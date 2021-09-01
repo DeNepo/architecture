@@ -6,6 +6,8 @@ export const addNumberListener = () => {
   document
     .getElementById('number-input')
     .addEventListener('change', (event) => {
+      debugger; // entry point: user interaction
+
       // read user input
       const newNumber = Number(event.target.value);
 

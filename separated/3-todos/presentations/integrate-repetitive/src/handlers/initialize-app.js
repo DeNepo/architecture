@@ -6,6 +6,8 @@ import { listComponent } from '../components/list.js';
 import { filtersComponent } from '../components/filters.js';
 
 export const initializeApp = async () => {
+  debugger; // entry point: initialize state & UI
+
   await initializeState();
 
   document.getElementById('title').innerText = get('title');

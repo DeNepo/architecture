@@ -7,6 +7,8 @@ import { footer } from '../components/footer.js';
 import { textInput } from '../components/text-input.js';
 
 export const initGreeting = async () => {
+  debugger; // greeting.html entry point: initialize state & UI
+
   await initializeState();
 
   document.getElementById('navbar-container').appendChild(navbar());

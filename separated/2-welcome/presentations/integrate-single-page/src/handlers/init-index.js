@@ -6,6 +6,8 @@ import { readMessage } from '../../../../business-logic/read-message.js';
 import { beWelcoming } from '../../../../business-logic/be-welcoming.js';
 
 export const initIndex = async () => {
+  debugger; // entry point: initialize state & UI
+
   await initializeState();
 
   document.getElementById('words').innerHTML = beWelcoming();

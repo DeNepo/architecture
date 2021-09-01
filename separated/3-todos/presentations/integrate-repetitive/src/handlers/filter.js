@@ -4,6 +4,8 @@ import { getActiveItems } from '../../../../business-logic/get-active-items.js';
 import { listComponent } from '../components/list.js';
 
 export const filterHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input from custom event
   const done = event.detail.done;
   const notDone = event.detail.notDone;

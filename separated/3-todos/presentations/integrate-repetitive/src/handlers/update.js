@@ -3,6 +3,8 @@ import { updateItem } from '../../../../business-logic/update-item.js';
 import { listComponent } from '../components/list.js';
 
 export const updateHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input from custom event
   const itemToUpdate = event.detail.item;
 

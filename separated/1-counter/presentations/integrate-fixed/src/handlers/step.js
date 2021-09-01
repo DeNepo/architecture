@@ -1,6 +1,8 @@
 import { step } from '../../../../business-logic/step.js';
 
 export const stepHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input
   const action = event.target.id;
 

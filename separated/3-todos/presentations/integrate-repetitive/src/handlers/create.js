@@ -3,6 +3,8 @@ import { createItem } from '../../../../business-logic/create-item.js';
 import { listComponent } from '../components/list.js';
 
 export const createHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input from custom event
   const task = event.target.form.task.value;
   const done = event.target.form.done.checked;

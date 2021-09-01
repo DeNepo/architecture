@@ -6,6 +6,8 @@ import { updateItemListener } from '../listeners/update-item.js';
 import { filterListener } from '../listeners/filter.js';
 import { searchListener } from '../listeners/search.js';
 
+debugger; // entry point: attach event listeners
+
 loadListener();
 
 createItemListener('create-new-item');

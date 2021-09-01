@@ -37,6 +37,7 @@
 
       // 0. initialize state
       const initializeApp = async () => {
+        debugger; // entry point
         await initializeState();
 
         // 2. display done
@@ -45,6 +46,7 @@
       };
       // 4. toggle done
       const toggleDoneHandler = () => {
+        debugger; // entry point
         const isDone = toggleDone();
         document.getElementById('toggler').checked = isDone;
       };

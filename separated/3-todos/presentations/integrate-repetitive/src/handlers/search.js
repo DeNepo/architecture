@@ -4,6 +4,8 @@ import { set } from '../../../../business-logic/set.js';
 import { listComponent } from '../components/list.js';
 
 export const searchHandler = (event) => {
+  debugger; // entry point: user interaction
+
   // read user input
   const query = event.target.value;
 

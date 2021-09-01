@@ -11,6 +11,7 @@ const initializeState = async () => {
 
 // 0. initialize state
 const init = async () => {
+  debugger; // entry point
   await initializeState();
 };
 
