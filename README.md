@@ -147,7 +147,11 @@ What you can expect to learn in this module
   - **_Business Logic_**: Functions that take in JS data, read/update state, and return new data. these can be called from handlers, components, or other business logic. Business Logic functions can only import `utils`, `data-access` and other `business-logic` functions.
   - **_Handlers_**: The same role as in Separation of Concerns, only now with a few more restrictions. Handlers _can not_ use _data_ directly or use _data access_ functions. They can only import _Business Logic_, _Components_ and _Utils_.
   - **_Custom Events_**: Functions that return a `new CustomEvent` with your choice of `.type`, and data stored in the it's `.details` property. These will be very helpful for creating testable and reuseable components in your frontend. Custom Events can only import `utils`
-- 🥚 **Development Steps**:
+- 🥚 **Development Steps**: In this module you will learn to build your projects backwards from the "inside" out:
+  1. Plan and write your data (_.json_ file and schema)
+  2. Plan, write and test your business logic
+  3. Plan and write a static user interface (HTML+CSS)
+  4. Develop interactions for the interface (listeners, handlers, components, custom events)
 - 🐣 **Nested Data**: Given a nested data structure containing arrays, objects and primitive values, you can 1) access a given value 2) update a given entry 3) filter the data
 - 🐣 **Matching a JSON Schemas**: You can write an object or array that matches a JSON schema.
 - 🐣 **Using a Library**: You can select which functions from the `/data-access` library to use in your Business Logic functions. This includes reading the documentation, tests and source code to understand how the Data Access functions work.
