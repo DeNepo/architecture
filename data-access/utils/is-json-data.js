@@ -19,12 +19,12 @@ export const isJsonData = (thing) => {
 
   // is it an array containing only json-friendly items?
   if (Array.isArray(thing)) {
-    return thing.every((entry) => isJsonData(entry));
+    return thing.every(isJsonData);
   }
 
   // is it a plain object containing only json-friendly entries?
   if (isPlainObject(thing)) {
-    return Object.entries(thing).every((entry) => isJsonData(entry));
+    return Object.values(thing).every(isJsonData);
   }
 
   // nothing else is json-friendly!

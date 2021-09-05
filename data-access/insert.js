@@ -27,11 +27,11 @@ only these types are allowed:
 
   if (key in state()) {
     throw new ReferenceError(`cannot insert: key "${key}" already exists`);
-  } else {
-    setItem(key, value);
-
-    console.groupCollapsed(`: insert "${key}:"`, value);
-    console.trace('new state:', state());
-    console.groupEnd();
   }
+
+  setItem(key, value);
+
+  console.groupCollapsed(`: insert "${key}:"`, value);
+  console.trace('new state:', state());
+  console.groupEnd();
 };

@@ -7,10 +7,11 @@ import { getItem } from './get-item.js';
  * @returns
  */
 export const state = (log = false) => {
-  const storeState = Object.keys(store).reduce(
-    (all, key) => Object.assign(all, { [key]: getItem(key) }),
-    {},
-  );
+  const mergeObjects = (all, key) => {
+    return { ...all, ...{ [key]: getItem(key) } };
+  };
+
+  const storeState = Object.keys(store).reduce(mergeObjects, {});
 
   if (log) {
     console.log(': state:', storeState);
